@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  samba:
+    image: dperson/samba
+    volumes:
+      - ./share:/mount
+    ports:
+      - "139:139"
+      - "445:445"
+    command: ['-u', 'username;password', '-s', 'share;/mount;yes;no;no;all;none;username']
+    restart: unless-stopped
+
